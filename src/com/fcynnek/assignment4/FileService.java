@@ -1,26 +1,60 @@
 package com.fcynnek.assignment4;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class FileService {
 	// this class will read in the Master List File
 
-	int i = 0; // creating an index to read all lines in the file
-
-	private UserPOJO[] studentDataArray = new UserPOJO[i];
-
-	public String fileInput() throws IOException {
+	String fileName = "master.csv";
+	
+	public static Integer countLines (String fileName) {
 
 		BufferedReader fileReader = null;
 
+		int numberOfLines = 0;
+
 		try {
-			fileReader = new BufferedReader (new FileReader ("master.csv"));
+			fileReader = new BufferedReader(new FileReader(fileName));
 
-			String line = "";
+			try {
+				while ((fileReader.readLine()) != null) {
+					numberOfLines = numberOfLines + 1;
+				}
+			} catch (IOException e) {
+				System.out.println("I/O Exception ocurred");
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println(".txt File not found");
+			e.printStackTrace();
+		} finally {
+			try {
+				fileReader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return numberOfLines;
+	} 
 
-			int i = 1;
+
+	public UserPOJO[] readStudentData(String fileName) throws IOException {
+
+		BufferedReader fileReader = null;
+		
+		Integer numberOfLines = countLines(fileName);
+		
+		UserPOJO[] studentDataArray = new UserPOJO[numberOfLines];
+		
+		int i = 0;
+
+		try {
+			fileReader = new BufferedReader(new FileReader(fileName));
+
+			String line = null;
 
 			try {
 				while ((line = fileReader.readLine()) != null) {
@@ -40,18 +74,21 @@ public class FileService {
 
 					studentDataArray[i] = studentData;
 					i = i + 1;
-				}
-
-			} finally {
-				
+				}  
+			} catch (IOException e) {
+				System.out.println("I/O Exception ocurred");
+				e.printStackTrace();
 			}
+		} catch (FileNotFoundException e) {
+			System.out.println(".txt File not found");
+			e.printStackTrace();
 		} finally {
 			try {
 				fileReader.close();
-			} finally {
-				
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
-		return null;
+		return studentDataArray;
 	}
 }

@@ -100,4 +100,11 @@ public class FileService {
 		}
 		return studentDataArray;
 	}
+	
+	
+	public String sortingStudents() {
+		
+		
+		return sortingStudents;
+	}
 }

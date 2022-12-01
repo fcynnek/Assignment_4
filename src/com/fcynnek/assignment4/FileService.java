@@ -58,17 +58,26 @@ public class FileService {
 
 			try {
 				while ((line = fileReader.readLine()) != null) {
-					System.out.println(line);
+//					System.out.println(line);
 
 					String[] parsedLine = line.split(",");
 					String parsedStudentID = parsedLine[0];
 					String parsedStudentName = parsedLine[1];
 					String parsedCourseID = parsedLine[2];
 					String parsedStudentGrade = parsedLine[3];
+					
+					
+//					String[] parsedCourseNameAndID = parsedLine[2].split("\\s");
+//					String parsedCourseName = parsedCourseNameAndID[0];
+//					System.out.println(parsedCourseName);
+//					String parsedCourseID = parsedCourseNameAndID[1];
+//					System.out.println(parsedCourseID);
+					
 
 					UserPOJO studentData = new UserPOJO();
 					studentData.setStudentID(parsedStudentID);
 					studentData.setStudentName(parsedStudentName);
+//					studentData.setCourseName(parsedCourseName);
 					studentData.setCourseID(parsedCourseID);
 					studentData.setStudentGrade(parsedStudentGrade);
 

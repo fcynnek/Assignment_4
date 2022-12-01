@@ -5,6 +5,7 @@ public class UserPOJO {
 	
 	private String studentID;
 	private String studentName;
+//	private String courseName;
 	private String courseID;
 	private String studentGrade;
 	
@@ -16,6 +17,9 @@ public class UserPOJO {
 	public String getStudentName() {
 		return studentName;
 	}
+//	public String getCourseName() {
+//		return courseName;
+//	}
 	public String getCourseID() {
 		return courseID;
 	}
@@ -31,12 +35,16 @@ public class UserPOJO {
 	public void setStudentName(String studentName) {
 		this.studentName = studentName;
 	}
+//	public void setCourseName(String courseName) {
+//		this.courseName = courseName;
+//	}
 	public void setCourseID(String courseID) {
 		this.courseID = courseID;
 	}
 	public void setStudentGrade(String studentGrade) {
 		this.studentGrade = studentGrade;
 	}
+	
 	
 	
 }

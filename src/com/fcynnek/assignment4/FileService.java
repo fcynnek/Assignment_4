@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Comparator;
 import java.util.Arrays;
 
-public class FileService implements Comparator {
+public class FileService {
 	// this class will read in the Master List File
 
 	String fileName = "master.csv";
@@ -120,9 +120,5 @@ public class FileService implements Comparator {
 //		return sortedGrades;
 	}
 
-	@Override
-	public int compare(Object o1, Object o2) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 }

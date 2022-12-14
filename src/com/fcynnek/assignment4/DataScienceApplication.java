@@ -20,7 +20,7 @@ public class DataScienceApplication {
 		// same thing as studentData but assigning it a different name
 		// TODO look up references in Java
 
-		UserPOJO[] compSciStudentData = findStudentsByClass(studentData, "COMPSCI");
+		UserPOJO[] compSciStudentData = findStudentsByClass(sortedStudentsByGrade, "COMPSCI");
 		
 		for (UserPOJO compSciStudentDatum : compSciStudentData) {
 			System.out.println(compSciStudentDatum);
@@ -35,7 +35,7 @@ public class DataScienceApplication {
 			
 			@Override
 			public int compare(UserPOJO student1, UserPOJO student2) {
-				return student2.getStudentGrade().compareTo(student1.getStudentGrade());
+				return student1.getStudentGrade().compareTo(student2.getStudentGrade());
 			}
 		});
 		return  studentData;

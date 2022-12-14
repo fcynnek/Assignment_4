@@ -103,24 +103,28 @@ public class FileService {
 	
 	}
 
-	public UserPOJO[] outputSortedStudents(UserPOJO[] studentClass, String fileName) {
-		
-		BufferedWriter writer = null;
-		
-		String line = null;
-		
-		try {
-			writer = new BufferedWriter(new FileWriter(fileName));
-			
-			while ((line = writer.write(studentClass)).equals(studentClass)) {
-				writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
-				writer.write(studentClass);
-			} finally {
-				if (!writer.equals(studentClass)) {
-					writer.close();
-				}
-			}
-		}
-	}
+//	public UserPOJO[] outputSortedStudents(int studentClass, String fileName) {
+//		
+//		BufferedWriter writer = null;
+//		
+//		String line = null;
+//		
+//		int i = 0;
+//		
+//		try {
+//			writer = new BufferedWriter(new FileWriter(fileName));
+//			
+//			while ()
+////			while ((line = writer.write(studentClass)).equals(studentClass)) {
+////				writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
+////				writer.write(studentClass);
+////			}  
+//			
+//		} finally {
+//			if (!writer.equals(studentClass)) {
+//				writer.close();
+//			}
+//		}
+//	}
 	
 }

@@ -1,8 +1,10 @@
 package com.fcynnek.assignment4;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.Arrays;
@@ -99,26 +101,26 @@ public class FileService {
 		}
 		return studentDataArray;
 	
-
-//	public String sortingStudentsGrade() {
-
-//	String sortedGrades = null;
-
-//	UserPOJO[] users = new UserPOJO[countLines(fileName)];
-
-//	Arrays.sort(users, new Comparator<UserPOJO>() {
-
-//		@Override
-//		public int compare(UserPOJO studentGrade1, UserPOJO studentGrade2) {
-//
-//			return studentGrade1.getStudentGrade().compareTo(studentGrade2.getStudentGrade());
-//		}
-//	});
-//	for (UserPOJO user : users) {
-//		System.out.println(user);
-//	}
-//		return sortedGrades;
 	}
 
+	public UserPOJO[] outputSortedStudents(UserPOJO[] studentClass, String fileName) {
+		
+		BufferedWriter writer = null;
+		
+		String line = null;
+		
+		try {
+			writer = new BufferedWriter(new FileWriter(fileName));
+			
+			while ((line = writer.write(studentClass)).equals(studentClass)) {
+				writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
+				writer.write(studentClass);
+			} finally {
+				if (!writer.equals(studentClass)) {
+					writer.close();
+				}
+			}
+		}
+	}
 	
 }

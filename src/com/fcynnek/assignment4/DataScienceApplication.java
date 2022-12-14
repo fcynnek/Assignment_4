@@ -16,7 +16,7 @@ public class DataScienceApplication {
 
 		UserPOJO[] studentData = fileService.readStudentData(fileName);
 
-		UserPOJO[] sortedStudentsByClass = sortStudentsByClass(studentData);
+		UserPOJO[] sortedStudentsByGrade = sortStudentsByGrade(studentData);
 		// same thing as studentData but assigning it a different name
 		// TODO look up references in Java
 
@@ -28,14 +28,14 @@ public class DataScienceApplication {
 		
 		
 	}
-	public static UserPOJO[] sortStudentsByClass (UserPOJO[] studentData) {
+	public static UserPOJO[] sortStudentsByGrade (UserPOJO[] studentData) {
 				
 		Arrays.sort(studentData, new Comparator<UserPOJO>() {
-		// not UserPOJO[] because not comparing 2 arrays but comparing 2 users at the time
+		// not UserPOJO[] because not comparing 2 arrays but comparing 2 users (objects) at the time
 			
 			@Override
 			public int compare(UserPOJO student1, UserPOJO student2) {
-				return student1.getCourseID().compareTo(student2.getCourseID());
+				return student2.getStudentGrade().compareTo(student1.getStudentGrade());
 			}
 		});
 		return  studentData;
@@ -46,19 +46,17 @@ public class DataScienceApplication {
 		ArrayList<UserPOJO> filteredStudents = new ArrayList<UserPOJO>();
 		// ArrayList<> can grow or expand without the need to know how big the array is
 		
-		//	filteredStudents.add(studentData[0]);
-		
 		for (UserPOJO studentDatum : studentData) {
-			if (studentDatum.getCourseID().contains(courseID)) {
+			if (studentDatum.getStudentGrade().contains(courseID)) {
 				filteredStudents.add(studentDatum);
 			}
 		}
 		
-		UserPOJO[] ans = new UserPOJO[filteredStudents.size()];
+		UserPOJO[] appliedFilter = new UserPOJO[filteredStudents.size()];
 		
-		filteredStudents.toArray(ans);
+		filteredStudents.toArray(appliedFilter);
 		
-		return ans;
+		return appliedFilter;
 		
 		
 	}

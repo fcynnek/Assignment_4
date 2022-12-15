@@ -16,11 +16,11 @@ public class DataScienceApplication {
 
 		UserPOJO[] studentData = fileService.readStudentData(fileName);
 
-		UserPOJO[] sortedStudentsByGrade = sortStudentsByGrade(studentData);
+		UserPOJO[] sortedStudentsByClass = sortStudentsByClass(studentData);
 		// same thing as studentData but assigning it a different name
 		// TODO look up references in Java
 
-		UserPOJO[] compSciStudentData = findStudentsByClass(sortedStudentsByGrade, "COMPSCI");
+		UserPOJO[] compSciStudentData = findStudentsByClass(sortedStudentsByClass, "COMPSCI");
 		
 		for (UserPOJO compSciStudentDatum : compSciStudentData) {
 			System.out.println(compSciStudentDatum);
@@ -28,6 +28,21 @@ public class DataScienceApplication {
 		
 		
 	}
+	
+	public static UserPOJO[] sortStudentsByClass (UserPOJO[] studentData) {
+		
+		Arrays.sort(studentData, new Comparator<UserPOJO>() {
+		// not UserPOJO[] because not comparing 2 arrays but comparing 2 users (objects) at the time
+			
+			@Override
+			public int compare(UserPOJO student1, UserPOJO student2) {
+				return student1.getCourseID().compareTo(student2.getCourseID());
+			}
+		});
+		return  studentData;
+	}
+	
+	
 	public static UserPOJO[] sortStudentsByGrade (UserPOJO[] studentData) {
 				
 		Arrays.sort(studentData, new Comparator<UserPOJO>() {

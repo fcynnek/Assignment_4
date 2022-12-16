@@ -16,16 +16,23 @@ public class DataScienceApplication {
 
 		UserPOJO[] studentData = fileService.readStudentData(fileName);
 
-		UserPOJO[] sortedStudentsByClass = sortStudentsByClass(studentData);
+//		UserPOJO[] sortedStudentsByClass = sortStudentsByClass(studentData);
 		// same thing as studentData but assigning it a different name
 		// TODO look up references in Java
 
-		UserPOJO[] compSciStudentData = findStudentsByClass(sortedStudentsByClass, "COMPSCI");
+		UserPOJO[] compSciStudentData = findStudentsByClass(studentData, "COMPSCI");
+//		UserPOJO[] APMthStudentData = findStudentsByClass(studentData, "APMTH");
+//		UserPOJO[] statsStudentData = findStudentsByClass(studentData, "STAT");
 		
-		for (UserPOJO compSciStudentDatum : compSciStudentData) {
+		UserPOJO[] sortedCompSci = sortStudentsByGrade(compSciStudentData);
+		
+		for (UserPOJO compSciStudentDatum : sortedCompSci) {
 			System.out.println(compSciStudentDatum);
 		}
 		
+		fileService.outputSortedStudents(sortedCompSci, "CompSci.csv");
+//		fileService.outputSortedStudents(APMthStudentData, "APMth.csv");
+//		fileService.outputSortedStudents(statsStudentData, "Stat.csv");
 		
 	}
 	
@@ -37,6 +44,7 @@ public class DataScienceApplication {
 			@Override
 			public int compare(UserPOJO student1, UserPOJO student2) {
 				return student1.getCourseID().compareTo(student2.getCourseID());
+				// natural sort (A-Z)
 			}
 		});
 		return  studentData;
@@ -50,7 +58,8 @@ public class DataScienceApplication {
 			
 			@Override
 			public int compare(UserPOJO student1, UserPOJO student2) {
-				return student1.getStudentGrade().compareTo(student2.getStudentGrade());
+				return student2.getStudentGrade().compareTo(student1.getStudentGrade());
+				// sorting from highest to lowest
 			}
 		});
 		return  studentData;
@@ -62,7 +71,7 @@ public class DataScienceApplication {
 		// ArrayList<> can grow or expand without the need to know how big the array is
 		
 		for (UserPOJO studentDatum : studentData) {
-			if (studentDatum.getStudentGrade().contains(courseID)) {
+			if (studentDatum.getCourseID().contains(courseID)) {
 				filteredStudents.add(studentDatum);
 			}
 		}

@@ -10,7 +10,7 @@ import java.util.Comparator;
 import java.util.Arrays;
 
 public class FileService {
-	// this class will read in the Master List File
+// this class will read the Master List File and write the CSV files
 
 	String fileName = "master.csv";
 
@@ -103,28 +103,35 @@ public class FileService {
 	
 	}
 
-//	public UserPOJO[] outputSortedStudents(int studentClass, String fileName) {
-//		
-//		BufferedWriter writer = null;
-//		
-//		String line = null;
-//		
-//		int i = 0;
-//		
-//		try {
-//			writer = new BufferedWriter(new FileWriter(fileName));
-//			
-//			while ()
-////			while ((line = writer.write(studentClass)).equals(studentClass)) {
-////				writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
-////				writer.write(studentClass);
-////			}  
-//			
-//		} finally {
-//			if (!writer.equals(studentClass)) {
-//				writer.close();
-//			}
-//		}
-//	}
-	
+	public UserPOJO[] outputSortedStudents(UserPOJO[] studentClass, String fileName) {
+
+		BufferedWriter writer = null;
+
+		int i = 0;
+
+		try {
+			writer = new BufferedWriter(new FileWriter(fileName));
+			writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
+			while (i < studentClass.length) {
+				writer.write(studentClass[i].toString() + "\n");
+				i++;
+			} 
+		} 
+		catch (IOException e) {
+			System.out.println("I/O Exception ocurred while writing the file");
+			e.printStackTrace();
+		}
+		finally {
+			if (writer != null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					System.out.println("I/O Exception ocurred while closing the writer");
+					e.printStackTrace();
+				}
+			}
+		}
+		return null;
+	}
+
 }

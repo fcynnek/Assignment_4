@@ -21,18 +21,18 @@ public class DataScienceApplication {
 		// TODO look up references in Java
 
 		UserPOJO[] compSciStudentData = findStudentsByClass(studentData, "COMPSCI");
-//		UserPOJO[] APMthStudentData = findStudentsByClass(studentData, "APMTH");
-//		UserPOJO[] statsStudentData = findStudentsByClass(studentData, "STAT");
+		UserPOJO[] APMthStudentData = findStudentsByClass(studentData, "APMTH");
+		UserPOJO[] statsStudentData = findStudentsByClass(studentData, "STAT");
 		
-		UserPOJO[] sortedCompSci = sortStudentsByGrade(compSciStudentData);
+//		UserPOJO[] sortedCompSci = sortStudentsByGrade(compSciStudentData);
+//		
+//		for (UserPOJO compSciStudentDatum : sortedCompSci) {
+//			System.out.println(compSciStudentDatum);
+//		}
 		
-		for (UserPOJO compSciStudentDatum : sortedCompSci) {
-			System.out.println(compSciStudentDatum);
-		}
-		
-		fileService.outputSortedStudents(sortedCompSci, "CompSci.csv");
-//		fileService.outputSortedStudents(APMthStudentData, "APMth.csv");
-//		fileService.outputSortedStudents(statsStudentData, "Stat.csv");
+		fileService.outputSortedStudents(compSciStudentData, "CompSci.csv");
+		fileService.outputSortedStudents(APMthStudentData, "APMth.csv");
+		fileService.outputSortedStudents(statsStudentData, "Stat.csv");
 		
 	}
 	
@@ -65,6 +65,7 @@ public class DataScienceApplication {
 		return  studentData;
 	}
 	
+	
 	public static UserPOJO[] findStudentsByClass (UserPOJO[] studentData, String courseID) {
 		
 		ArrayList<UserPOJO> filteredStudents = new ArrayList<UserPOJO>();
@@ -81,7 +82,5 @@ public class DataScienceApplication {
 		filteredStudents.toArray(appliedFilter);
 		
 		return appliedFilter;
-		
-		
 	}
 }

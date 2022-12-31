@@ -111,7 +111,7 @@ public class FileService {
 
 		try {
 			writer = new BufferedWriter(new FileWriter(fileName));
-			writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
+			writer.write("Student ID,Student Name,Course,Grade\n");
 			while (i < studentClass.length) {
 				writer.write(studentClass[i].toString() + "\n");
 				i++;

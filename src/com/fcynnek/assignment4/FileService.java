@@ -100,25 +100,25 @@ public class FileService {
 			}
 		}
 		return studentDataArray;
-	
+
 	}
 
 	public UserPOJO[] outputSortedStudents(UserPOJO[] studentClass, String fileName) {
 
 		BufferedWriter writer = null;
-		
+
 		String fileHeader = "Student ID,Student Name,Course,Grade";
 
 		int i = 0;
 
 		try {
-			writer = new BufferedWriter(new FileWriter(fileName)); 
-			writer.write(fileHeader + "\n");
+			writer = new BufferedWriter(new FileWriter(fileName));
+			writer.write("Student ID,Student Name,Course,Grade\n");
 			while (i < studentClass.length) {
 				writer.write(studentClass[i].toString() + "\n");
 				i++;
-			} 
-		} 
+			}
+		}
 		catch (IOException e) {
 			System.out.println("I/O Exception ocurred while writing the file");
 			e.printStackTrace();

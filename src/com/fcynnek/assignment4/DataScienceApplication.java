@@ -31,8 +31,8 @@ public class DataScienceApplication {
 //		}
 		
 		fileService.outputSortedStudents(compSciStudentData, "CompSci.csv");
-		fileService.outputSortedStudents(APMthStudentData, "APMth.csv");
-		fileService.outputSortedStudents(statsStudentData, "Stat.csv");
+//		fileService.outputSortedStudents(APMthStudentData, "APMth.csv");
+//		fileService.outputSortedStudents(statsStudentData, "Stat.csv");
 		
 	}
 	

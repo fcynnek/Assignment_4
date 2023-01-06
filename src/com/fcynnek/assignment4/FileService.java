@@ -107,15 +107,13 @@ public class FileService {
 
 		BufferedWriter writer = null;
 
-		String fileHeader = "Student ID,Student Name,Course,Grade";
-
 		int i = 0;
 
 		try {
 			writer = new BufferedWriter(new FileWriter(fileName));
 			writer.write("Student ID,Student Name,Course,Grade\n");
 			while (i < studentClass.length) {
-				writer.write(studentClass[i].toString() + "\n");
+				writer.write((studentClass[i].toString() + "\n").replace("\"", ""));
 				i++;
 			}
 		}

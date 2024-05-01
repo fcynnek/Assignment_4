@@ -1,2 +1,5 @@
 # Assignment_4
- K. Cheng's Assignment #4 for Coders Campus Bootcamp
+
+Assignment #4 for Coders Campus Bootcamp
+
+This assignment was to parse data from a txt file, make some operations and output some files in CSV format.
